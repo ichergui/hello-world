@@ -6,13 +6,13 @@ This is a simple code source of kernel module "Hello world".
     $ cd $HOME
     $ mkdir devel
     $ cd devel
-    $ git clone https://github.com/ichergui/hello_world.git
+    $ git clone https://github.com/ichergui/hello-world.git
 
 ### Build
 It will be possible to use the Makefile.
 
 ```bash
-$ cd $HOME/devel/hello_world
+$ cd $HOME/devel/hello-world
 $ make all
 ```
 
