@@ -18,7 +18,7 @@ jobs:
     - name: Install kernel headers
       run: sudo apt-get install -y linux-headers-${{ matrix.kernel_version }}
     - name: Build kernel module
-      run: make all
+      run: make -C /lib/modules/${{ matrix.kernel_version }}/build M=$(pwd) modules
     - name: Load kernel module
       run: sudo insmod hello_world.ko
     - name: Unload kernel module
