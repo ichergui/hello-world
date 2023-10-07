@@ -1,0 +1,25 @@
+name: Kernel Module CI/CD
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        kernel_version: [5.15]
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install kernel headers
+      run: sudo apt-get install -y linux-headers-${{ matrix.kernel_version }}
+    - name: Build kernel module
+      run: make all
+    - name: Load kernel module
+      run: sudo insmod hello_world.ko
+    - name: Unload kernel module
+      run: sudo rmmod hello_world.ko
